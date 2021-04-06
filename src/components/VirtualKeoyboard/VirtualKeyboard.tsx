@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styled, { CSSProp, keyframes, css } from "styled-components";
 import { media } from "../../breakpoints";
 import { colors } from "../../colors";
@@ -94,33 +94,65 @@ const LongButton = styled(ArgumentButton)`
 interface Props {
   input: InputHook;
   clearTruthTable: () => void;
+  clearOutput: () => void;
 }
 
 export const VirtualKeyboard = ({
   input,
   clearTruthTable,
+  clearOutput,
 }: Props): JSX.Element => {
   const [startAnimation, setStartAnimation] = useState<boolean>(false);
-  const { onKeyPress, onClear, onDelete } = input;
+  const { onVirtualKeyPress, onClear, onDelete } = input;
+
+  const clearAll = (): void => {
+    clearTruthTable();
+    clearOutput();
+  };
+
   return (
     <KeyboardWrapper>
       <KeyboardRow>
-        <ArgumentButton onClick={() => onKeyPress("A ")}>A</ArgumentButton>
-        <ArgumentButton onClick={() => onKeyPress("B ")}>B</ArgumentButton>
-        <ArgumentButton onClick={() => onKeyPress("C ")}>C</ArgumentButton>
-        <OperatorButton onClick={() => onKeyPress("NOT ")}>NOT</OperatorButton>
+        <ArgumentButton onClick={() => onVirtualKeyPress("A ")}>
+          A
+        </ArgumentButton>
+        <ArgumentButton onClick={() => onVirtualKeyPress("B ")}>
+          B
+        </ArgumentButton>
+        <ArgumentButton onClick={() => onVirtualKeyPress("C ")}>
+          C
+        </ArgumentButton>
+        <OperatorButton onClick={() => onVirtualKeyPress("NOT ")}>
+          NOT
+        </OperatorButton>
       </KeyboardRow>
       <KeyboardRow>
-        <ArgumentButton onClick={() => onKeyPress("D ")}>D</ArgumentButton>
-        <ArgumentButton onClick={() => onKeyPress("E ")}>E</ArgumentButton>
-        <ArgumentButton onClick={() => onKeyPress("F ")}>F</ArgumentButton>
-        <OperatorButton onClick={() => onKeyPress("AND ")}>AND</OperatorButton>
+        <ArgumentButton onClick={() => onVirtualKeyPress("D ")}>
+          D
+        </ArgumentButton>
+        <ArgumentButton onClick={() => onVirtualKeyPress("E ")}>
+          E
+        </ArgumentButton>
+        <ArgumentButton onClick={() => onVirtualKeyPress("F ")}>
+          F
+        </ArgumentButton>
+        <OperatorButton onClick={() => onVirtualKeyPress("AND ")}>
+          AND
+        </OperatorButton>
       </KeyboardRow>
       <KeyboardRow>
-        <ArgumentButton onClick={() => onKeyPress("G ")}>G</ArgumentButton>
-        <ArgumentButton onClick={() => onKeyPress("P ")}>P</ArgumentButton>
-        <ArgumentButton onClick={() => onKeyPress("Q ")}>Q</ArgumentButton>
-        <OperatorButton onClick={() => onKeyPress("OR ")}>OR</OperatorButton>
+        <ArgumentButton onClick={() => onVirtualKeyPress("G ")}>
+          G
+        </ArgumentButton>
+        <ArgumentButton onClick={() => onVirtualKeyPress("P ")}>
+          P
+        </ArgumentButton>
+        <ArgumentButton onClick={() => onVirtualKeyPress("Q ")}>
+          Q
+        </ArgumentButton>
+        <OperatorButton onClick={() => onVirtualKeyPress("OR ")}>
+          OR
+        </OperatorButton>
       </KeyboardRow>
       <KeyboardRow>
         <SpecialButton
@@ -130,12 +162,14 @@ export const VirtualKeyboard = ({
         >
           <img src={dice} alt="randomize" />
         </SpecialButton>
-        <SpecialButton onClick={() => onKeyPress("(")}>(</SpecialButton>
-        <SpecialButton onClick={() => onKeyPress(")")}>)</SpecialButton>
-        <OperatorButton onClick={() => onKeyPress("XOR ")}>XOR</OperatorButton>
+        <SpecialButton onClick={() => onVirtualKeyPress("(")}>(</SpecialButton>
+        <SpecialButton onClick={() => onVirtualKeyPress(")")}>)</SpecialButton>
+        <OperatorButton onClick={() => onVirtualKeyPress("XOR ")}>
+          XOR
+        </OperatorButton>
       </KeyboardRow>
       <KeyboardRow>
-        <LongButton onClick={() => onClear(clearTruthTable)}>CLEAR</LongButton>
+        <LongButton onClick={() => onClear(clearAll)}>CLEAR</LongButton>
         <LongButton onClick={() => onDelete()}>DEL</LongButton>
       </KeyboardRow>
     </KeyboardWrapper>

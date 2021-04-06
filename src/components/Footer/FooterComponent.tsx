@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { colors } from "../../colors";
 
@@ -15,6 +14,10 @@ const Footer = styled.footer`
     margin: 5px 0;
     padding: 0;
   }
+  a {
+    text-decoration: none;
+    color: ${colors.blue};
+  }
 `;
 
 export const FooterComponent = (): JSX.Element => {
@@ -26,10 +29,18 @@ export const FooterComponent = (): JSX.Element => {
       </p>
       <p>
         {" "}
-        Adam Rosiak & Adrian Ryniec pod kierunkiem dr Elżbiety Piwowarskiej.{" "}
+        <b>Adam Rosiak</b> & <b>Adrian Ryniec</b> pod kierunkiem{" "}
+        <b>doc. dr Elżbiety Piwowarskiej</b>.{" "}
       </p>
-      <p>github: https://github/Nitropox/boolean-calc</p>
-      <p>2021</p>
+      <p>
+        github:{" "}
+        <a href="https://github/Nitropox/boolean-calc">
+          https://github/Nitropox/boolean-calc
+        </a>
+      </p>
+      <p>
+        wykonano w <b>2021</b>
+      </p>
     </Footer>
   );
 };

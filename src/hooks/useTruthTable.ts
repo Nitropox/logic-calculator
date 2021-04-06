@@ -1,25 +1,22 @@
 import { useEffect, useState } from "react";
+import { isOperand } from "../urils/isOperand";
 import { computeRpnExpression } from "../urils/reversePolishNotation";
+import { InputHook } from "./useInput";
 
 /**
  *
  * @param n amount of operands
- * @returns array of all bit states for n arguments eg. for n = 2 returns ['00', '01', '10'. '11']
+ * @returns array of all binary states for n arguments eg. for n = 2 returns ['00', '01', '10'. '11']
  */
 const allBinaryStates = (n: number): string[] => {
   const totalElements = 2 ** n;
   const arr = new Uint8Array(totalElements);
   const outputArr: string[] = [];
-  arr.forEach((el, i) => {
+  arr.forEach((_, i) => {
     const bit = arr.join("").concat(i.toString(2));
     outputArr.push(bit.substr(bit.length - n));
   });
   return outputArr;
-};
-
-const isOperand = (element: string): boolean => {
-  const operators = ["OR", "XOR", "AND", "NOT", "(", ")"];
-  return !operators.includes(element);
 };
 
 const uniqOperandsList = (inputStack: string[]): string[] => {
@@ -61,11 +58,8 @@ interface TruthTableHook {
   clearTruthTable: () => void;
 }
 
-export const useTruthTable = (
-  inputStack: string[],
-  processing: boolean,
-  setProcessing: (_: boolean) => void
-): TruthTableHook => {
+export const useTruthTable = (input: InputHook): TruthTableHook => {
+  const { processing, inputStack, setProcessing } = input;
   const [truthTable, setTruthTable] = useState<string[][]>([]);
   const [tableHeader, setTableHeader] = useState<string[]>([]);
 

@@ -11,15 +11,20 @@ const Output = styled.div`
   margin: 0 0 40px;
   width: 100%;
   max-width: 780px;
-  height: 90px;
   border: 1px solid ${colors.greyLight};
   border-radius: 4px;
   background-color: ${colors.seledin};
+  padding: 16px;
+  min-height: 48px;
 `;
 
-export const OutputComponent = (): JSX.Element => (
+interface Props {
+  minifiedExpression: string;
+}
+
+export const OutputComponent = ({ minifiedExpression }: Props): JSX.Element => (
   <OutputWrapper>
-    <Label text="Wyniki minimalizacji:" />
-    <Output />
+    <Label text="Wynik minimalizacji:" />
+    <Output>{minifiedExpression}</Output>
   </OutputWrapper>
 );

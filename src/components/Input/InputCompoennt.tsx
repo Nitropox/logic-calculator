@@ -1,18 +1,23 @@
-import { useState } from "react";
-import styled from "styled-components";
+import { forwardRef, ForwardedRef, useEffect, useCallback } from "react";
+import styled, { css, CSSProp } from "styled-components";
 import { colors } from "../../colors";
 import { InputHook } from "../../hooks/useInput";
 import calc from "./calc.png";
 
 const InputWrapper = styled.div`
   display: flex;
+  position: relative;
   margin: 70px 0 40px;
   width: calc(100% - 40px);
   max-width: 780px;
   height: 48px;
 `;
 
-const Input = styled.input`
+interface InputProps {
+  inputError: boolean;
+}
+
+const Input = styled.input<InputProps>`
   flex: 1 0 auto;
   height: 48px;
   border-top-left-radius: 4px;
@@ -21,6 +26,13 @@ const Input = styled.input`
   padding-left: 10px;
   color: ${colors.greyDark};
   transition: border-color 250ms ease;
+
+  ${({ inputError }: InputProps): CSSProp =>
+    (inputError &&
+      css`
+        border: 1px solid red;
+      `) ||
+    ""};
 
   &:focus {
     outline: none;
@@ -59,26 +71,55 @@ const EnterButton = styled.button`
   }
 `;
 
+const Error = styled.div`
+  position: absolute;
+  font-size: 12px;
+  color: red;
+  bottom: -20px;
+`;
 interface Props {
   input: InputHook;
 }
 
-export const InputComponent = ({ input }: Props): JSX.Element => {
-  const { inputValue, onInputUpdate, setProcessing } = input;
+// eslint-disable-next-line react/display-name
+export const InputComponent = forwardRef(
+  ({ input }: Props, ref: ForwardedRef<HTMLInputElement>): JSX.Element => {
+    const { inputValue, onInputUpdate, validateInput, inputError } = input;
 
-  return (
-    <InputWrapper>
-      <Input
-        value={inputValue}
-        onChange={(e): void => onInputUpdate(e.target.value)}
-      />
-      <EnterButton
-        onClick={
-          inputValue.length ? (): void => setProcessing(true) : undefined
+    const handleEnterKeyPress = useCallback(
+      (event) => {
+        const { key } = event;
+
+        if (inputValue.length && key === "Enter") {
+          validateInput();
         }
-      >
-        <img src={calc} alt="calc" />
-      </EnterButton>
-    </InputWrapper>
-  );
-};
+      },
+      [inputValue.length, validateInput]
+    );
+
+    useEffect((): (() => void) => {
+      window.addEventListener("keydown", handleEnterKeyPress);
+
+      return (): void => {
+        window.removeEventListener("keydown", handleEnterKeyPress);
+      };
+    }, [handleEnterKeyPress]);
+
+    return (
+      <InputWrapper>
+        <Input
+          ref={ref}
+          value={inputValue}
+          onChange={(e): void => onInputUpdate(e.target.value)}
+          inputError={!!inputError}
+        />
+        <EnterButton
+          onClick={inputValue.length ? (): void => validateInput() : undefined}
+        >
+          <img src={calc} alt="calc" />
+        </EnterButton>
+        <Error>{inputError}</Error>
+      </InputWrapper>
+    );
+  }
+);
