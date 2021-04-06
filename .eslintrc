@@ -1,17 +1,26 @@
 {
   "extends": [
     "airbnb",
-    "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:import/typescript"
+    "plugin:prettier/recommended",
+    "plugin:react/recommended",
+    "plugin:import/typescript",
+    "plugin:jsx-a11y/recommended"
   ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
   "parser": "@typescript-eslint/parser",
   "plugins": [
     "@typescript-eslint",
     "react",
-    "react-hooks"
+    "react-hooks",
+    "jsx-a11y"
   ],
   "rules": {
+    "no-bitwise": "error",
     "react/react-in-jsx-scope": "off",
     "react/jsx-key": [
       2,
@@ -33,10 +42,6 @@
       }
     ],
     "@typescript-eslint/explicit-member-accessibility": "off",
-    "@typescript-eslint/indent": [
-      "error",
-      2
-    ],
     "react/jsx-props-no-spreading": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
@@ -50,7 +55,7 @@
         "js": "never",
         "jsx": "never",
         "ts": "never",
-        "tsx": "never",
+        "tsx": "never"
       }
     ],
     "import/no-extraneous-dependencies": [
@@ -69,7 +74,8 @@
           "ui/*"
         ]
       }
-    ]
+    ],
+    "no-use-before-define": "off"
   },
   "env": {
     "node": true,
