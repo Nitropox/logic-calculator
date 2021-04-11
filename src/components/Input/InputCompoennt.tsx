@@ -8,7 +8,7 @@ import calc from "./calc.png";
 const InputWrapper = styled.div`
   display: flex;
   position: relative;
-  margin: 70px 0 40px;
+  margin: 70px 0 60px;
   width: calc(100% - 40px);
   max-width: 780px;
   height: 48px;
