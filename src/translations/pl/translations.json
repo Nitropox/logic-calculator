@@ -1,0 +1,12 @@
+{
+  "inputPlaceholder": "Wprowadź wyrażenie logiczne",
+  "minResult": "Wynik minimalizacji:",
+  "errorNoOperands": "Brak operand w wyrażeniu.",
+  "errorNotValidExpr": "Niepoprawne wyrażenie logiczne.",
+  "footerPart1": "Kalkualtor do minimilizacji wyrażeń logicznych realizowany w ramach Projektu Zespołowego @ PW OKNO.",
+  "footerPart2": "pod kierunkiem",
+  "footerPart3": "doc. dr Elżbiety Piwowarskiej",
+  "footerPart4": "wykonano w",
+  "truthTable": "Tablica prawdy:"
+ }
+ 

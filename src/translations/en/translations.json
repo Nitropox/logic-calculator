@@ -1,0 +1,11 @@
+ {
+ "inputPlaceholder": "Enter logic expression",
+  "minResult": "Minimization result:",
+  "errorNoOperands": "There are no operands in the expression.",
+  "errorNotValidExpr": "Not valid logic expression.",
+  "footerPart1": "Logic minimization calculator developed as a team project assignment @ PW OKNO.",
+  "footerPart2": "under the guidance of",
+  "footerPart3": "doc. dr Elżbieta Piwowarska",
+  "footerPart4": "made in",
+  "truthTable": "Truth table:"
+}

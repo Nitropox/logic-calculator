@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { colors } from "../../colors";
 
@@ -21,16 +22,14 @@ const Footer = styled.footer`
 `;
 
 export const FooterComponent = (): JSX.Element => {
+  const { t } = useTranslation();
   return (
     <Footer>
-      <p>
-        Kalkualtor do minimilizacji wyrażeń logicznych realizowany w ramach
-        Projektu Zespołowego @ PW OKNO
-      </p>
+      <p>{t("footerPart1")}</p>
       <p>
         {" "}
-        <b>Adam Rosiak</b> & <b>Adrian Ryniec</b> pod kierunkiem{" "}
-        <b>doc. dr Elżbiety Piwowarskiej</b>.{" "}
+        <b>Adam Rosiak</b> & <b>Adrian Ryniec</b> {t("footerPart2")}{" "}
+        <b>{t("footerPart3")}</b>.{" "}
       </p>
       <p>
         github:{" "}
@@ -39,7 +38,7 @@ export const FooterComponent = (): JSX.Element => {
         </a>
       </p>
       <p>
-        wykonano w <b>2021</b>
+        {t("footerPart4")} <b>2021</b>
       </p>
     </Footer>
   );

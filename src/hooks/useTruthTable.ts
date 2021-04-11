@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { isOperand } from "../urils/isOperand";
-import { computeRpnExpression } from "../urils/reversePolishNotation";
+import { isOperand } from "../utils/isOperand";
+import { computeRpnExpression } from "../utils/reversePolishNotation";
 import { InputHook } from "./useInput";
 
 /**

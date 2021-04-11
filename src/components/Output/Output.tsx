@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { colors } from "../../colors";
 import { Label } from "../LayoutElements/Label";
@@ -22,9 +23,12 @@ interface Props {
   minifiedExpression: string;
 }
 
-export const OutputComponent = ({ minifiedExpression }: Props): JSX.Element => (
-  <OutputWrapper>
-    <Label text="Wynik minimalizacji:" />
-    <Output>{minifiedExpression}</Output>
-  </OutputWrapper>
-);
+export const OutputComponent = ({ minifiedExpression }: Props): JSX.Element => {
+  const { t } = useTranslation();
+  return (
+    <OutputWrapper>
+      <Label text={t("minResult")} />
+      <Output>{minifiedExpression}</Output>
+    </OutputWrapper>
+  );
+};

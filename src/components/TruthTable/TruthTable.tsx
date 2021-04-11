@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { colors } from "../../colors";
 import { Label } from "../LayoutElements/Label";
@@ -47,13 +48,15 @@ interface Props {
 }
 
 export const TruthTable = ({ truthTable, tableHeader }: Props): JSX.Element => {
+  const { t } = useTranslation();
+
   if (!truthTable.length) {
     return <></>;
   }
 
   return (
     <Table>
-      <Label text="Tablica prawdy:" />
+      <Label text={t("truthTable")} />
       <Row>
         {tableHeader.map(
           (cell, index): ReactNode => (

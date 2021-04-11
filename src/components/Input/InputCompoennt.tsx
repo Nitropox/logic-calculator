@@ -1,4 +1,5 @@
 import { forwardRef, ForwardedRef, useEffect, useCallback } from "react";
+import { useTranslation } from "react-i18next";
 import styled, { css, CSSProp } from "styled-components";
 import { colors } from "../../colors";
 import { InputHook } from "../../hooks/useInput";
@@ -37,6 +38,10 @@ const Input = styled.input<InputProps>`
   &:focus {
     outline: none;
     border: 1px solid ${colors.greyMedium};
+  }
+
+  &::placeholder {
+    color: ${colors.greyMedium};
   }
 `;
 
@@ -85,6 +90,7 @@ interface Props {
 export const InputComponent = forwardRef(
   ({ input }: Props, ref: ForwardedRef<HTMLInputElement>): JSX.Element => {
     const { inputValue, onInputUpdate, validateInput, inputError } = input;
+    const { t } = useTranslation();
 
     const handleEnterKeyPress = useCallback(
       (event) => {
@@ -112,6 +118,7 @@ export const InputComponent = forwardRef(
           value={inputValue}
           onChange={(e): void => onInputUpdate(e.target.value)}
           inputError={!!inputError}
+          placeholder={t("inputPlaceholder")}
         />
         <EnterButton
           onClick={inputValue.length ? (): void => validateInput() : undefined}

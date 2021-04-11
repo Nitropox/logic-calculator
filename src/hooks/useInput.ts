@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect, useRef } from "react";
-import { isOperand } from "../urils/isOperand";
+import { useTranslation } from "react-i18next";
+import { isOperand } from "../utils/isOperand";
 
 export interface InputHook {
   inputValue: string;
@@ -16,6 +17,7 @@ export interface InputHook {
 }
 
 export const useInput = (): InputHook => {
+  const { t } = useTranslation();
   const [inputValue, setInputValue] = useState<string>("");
   const [inputStack, setInputStack] = useState<string[]>([]);
   const [isDeleting, setIsDeleting] = useState<boolean>(false);
@@ -33,7 +35,7 @@ export const useInput = (): InputHook => {
         .replace(/\)/g, " ) ")
         .toUpperCase()
         .split(" ")
-        .filter((t) => t !== "");
+        .filter((tx) => tx !== "");
       setInputStack(textArray);
       setInputValue(text.toUpperCase());
     }
@@ -71,13 +73,13 @@ export const useInput = (): InputHook => {
     });
 
     if (noOperands) {
-      setInputError("Brak operand w wyrażeniu.");
+      setInputError(t("errorNoOperands"));
     } else if (!validExpression || notEnoughOperands) {
-      setInputError("Niepoprawne wyrażenie logiczne.");
+      setInputError(t("errorNotValidExpr"));
     } else {
       setProcessing(true);
     }
-  }, [inputStack]);
+  }, [inputStack, t]);
 
   const onClear = useCallback((callback?: () => void): void => {
     setInputError(undefined);

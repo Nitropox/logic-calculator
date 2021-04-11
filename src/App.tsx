@@ -1,3 +1,4 @@
+import "./utils/i18n";
 import { FooterComponent } from "./components/Footer/FooterComponent";
 import { InputComponent } from "./components/Input/InputCompoennt";
 import {
@@ -10,6 +11,7 @@ import { VirtualKeyboard } from "./components/VirtualKeoyboard/VirtualKeyboard";
 import { useInput } from "./hooks/useInput";
 import { useMinimize } from "./hooks/useMinimize";
 import { useTruthTable } from "./hooks/useTruthTable";
+import { LangSwitch } from "./components/LangSwitch/LangSwitch";
 
 export const App = (): JSX.Element => {
   const input = useInput();
@@ -21,6 +23,7 @@ export const App = (): JSX.Element => {
 
   return (
     <Container>
+      <LangSwitch />
       <InnerWrapper>
         <InputComponent input={input} ref={input.inputRef} />
         <VirtualKeyboard
