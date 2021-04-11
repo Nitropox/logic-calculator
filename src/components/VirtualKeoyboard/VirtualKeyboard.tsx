@@ -103,7 +103,12 @@ export const VirtualKeyboard = ({
   clearOutput,
 }: Props): JSX.Element => {
   const [startAnimation, setStartAnimation] = useState<boolean>(false);
-  const { onVirtualKeyPress, onClear, onDelete } = input;
+  const {
+    onVirtualKeyPress,
+    onClear,
+    onDelete,
+    generateRandomExpression,
+  } = input;
 
   const clearAll = (): void => {
     clearTruthTable();
@@ -157,7 +162,10 @@ export const VirtualKeyboard = ({
       <KeyboardRow>
         <SpecialButton
           startAnimation={startAnimation}
-          onClick={(): void => setStartAnimation(true)}
+          onClick={(): void => {
+            setStartAnimation(true);
+            generateRandomExpression();
+          }}
           onAnimationEnd={(): void => setStartAnimation(false)}
         >
           <img src={dice} alt="randomize" />

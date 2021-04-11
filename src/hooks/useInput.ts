@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { isOperand } from "../utils/isOperand";
+import { randomize } from "../utils/randomize";
 
 export interface InputHook {
   inputValue: string;
@@ -14,6 +15,7 @@ export interface InputHook {
   inputRef: React.RefObject<HTMLInputElement>;
   validateInput: () => void;
   inputError?: string;
+  generateRandomExpression: () => void;
 }
 
 export const useInput = (): InputHook => {
@@ -90,6 +92,13 @@ export const useInput = (): InputHook => {
     }
   }, []);
 
+  const generateRandomExpression = useCallback((): void => {
+    onClear();
+    const rndExp = randomize();
+    setInputValue(rndExp);
+    setInputStack(rndExp.split(" "));
+  }, [onClear]);
+
   const onDelete = useCallback((): void => {
     setInputError(undefined);
     setIsDeleting(true);
@@ -126,5 +135,6 @@ export const useInput = (): InputHook => {
     inputRef,
     validateInput,
     inputError,
+    generateRandomExpression,
   };
 };
