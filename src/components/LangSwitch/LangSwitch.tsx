@@ -54,7 +54,7 @@ export const LangSwitch = (): JSX.Element => {
       setShowSecondLng(false);
     }
   };
-  console.log(currentLang);
+
   return (
     <LangContainer>
       {showSecondLng && (
