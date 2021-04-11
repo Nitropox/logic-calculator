@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/logic-calculator/static/css/main.f483a614.chunk.css",
+    "main.js": "/logic-calculator/static/js/main.7b4ae65a.chunk.js",
+    "main.js.map": "/logic-calculator/static/js/main.7b4ae65a.chunk.js.map",
+    "runtime-main.js": "/logic-calculator/static/js/runtime-main.0ebde6f4.js",
+    "runtime-main.js.map": "/logic-calculator/static/js/runtime-main.0ebde6f4.js.map",
+    "static/js/2.11ad968d.chunk.js": "/logic-calculator/static/js/2.11ad968d.chunk.js",
+    "static/js/2.11ad968d.chunk.js.map": "/logic-calculator/static/js/2.11ad968d.chunk.js.map",
+    "static/js/3.29912b11.chunk.js": "/logic-calculator/static/js/3.29912b11.chunk.js",
+    "static/js/3.29912b11.chunk.js.map": "/logic-calculator/static/js/3.29912b11.chunk.js.map",
+    "index.html": "/logic-calculator/index.html",
+    "static/css/main.f483a614.chunk.css.map": "/logic-calculator/static/css/main.f483a614.chunk.css.map",
+    "static/js/2.11ad968d.chunk.js.LICENSE.txt": "/logic-calculator/static/js/2.11ad968d.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0ebde6f4.js",
+    "static/js/2.11ad968d.chunk.js",
+    "static/css/main.f483a614.chunk.css",
+    "static/js/main.7b4ae65a.chunk.js"
+  ]
+}
