@@ -45,7 +45,7 @@ const LangCircle = styled.button<Props>`
 export const LangSwitch = (): JSX.Element => {
   const [showSecondLng, setShowSecondLng] = useState<boolean>(false);
   const { i18n } = useTranslation();
-  const currentLang = i18n.language;
+  const currentLang = i18n.language.slice(0, 2);
   const changeLanguage = (lng: string) => {
     if (!showSecondLng) {
       setShowSecondLng(true);
@@ -54,7 +54,7 @@ export const LangSwitch = (): JSX.Element => {
       setShowSecondLng(false);
     }
   };
-
+  console.log(currentLang);
   return (
     <LangContainer>
       {showSecondLng && (
