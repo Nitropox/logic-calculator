@@ -33,8 +33,8 @@ export const FooterComponent = (): JSX.Element => {
       </p>
       <p>
         github:{" "}
-        <a href="https://github/Nitropox/boolean-calc">
-          https://github/Nitropox/boolean-calc
+        <a href="https://github/Nitropox/logic-calculator">
+          https://github/Nitropox/logic-calculator
         </a>
       </p>
       <p>
