@@ -8,8 +8,8 @@ import { Label } from "../LayoutElements/Label";
 const Table = styled.div`
   margin-bottom: 50px;
   max-width: 100%;
-  overflow: scroll;
 `;
+
 const Row = styled.div`
   display: flex;
 `;
