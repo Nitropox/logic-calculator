@@ -28,8 +28,8 @@ export const FooterComponent = (): JSX.Element => {
       <p>{t("footerPart1")}</p>
       <p>
         {" "}
-        <b>Adam Rosiak</b> & <b>Adrian Ryniec</b> {t("footerPart2")}{" "}
-        <b>{t("footerPart3")}</b>.{" "}
+        <b>Adam Rosiak</b>
+        {t("footerPart2")} <b>{t("footerPart3")}</b>.{" "}
       </p>
       <p>
         github:{" "}
